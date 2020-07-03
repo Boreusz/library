@@ -1,0 +1,86 @@
+body{
+    background-color: rgb(194, 194, 194);
+    font-family: sans-serif;
+
+}
+a{
+    text-decoration: none;
+    color: rgb(73, 73, 73);
+    font-weight: bold;
+    font-size: 24px;
+}
+button{
+    width: 150px;
+    height: 30px;
+
+    border-radius: 10px;
+    border-style: solid;
+    box-shadow: 0px 0px 15px #d8d8d8;
+
+    font-size: 16px;
+    font-weight: 500;
+}
+input{
+    margin-bottom: 5px;
+}
+p{
+    margin-top: 10px;
+    margin-bottom: 7px;
+    padding-bottom: 3px;
+    margin-right: 10px;
+    border-bottom: solid 1px rgb(179, 177, 177);
+}
+
+#header{
+    width: 200px;
+    height: 30px;
+    padding: 10px 0 10px;
+}
+#main{
+
+}
+#books-container{
+
+}
+#form-container{
+    width: 250px;
+    height: 250px;
+    background-color: rgba(255, 255, 255, 0.589);
+    border-radius: 10px;
+    margin: auto;
+    display: none;
+}
+#input-form{
+    padding-top: 15px;
+    width: 160px;
+    margin-left: 40px;
+
+}
+#input-form button{
+    margin-left: 10px;
+}
+#pages, #author, #title{
+    width: 150px;
+}
+#close{
+    cursor: pointer;
+    padding: 5px 10px;
+    float: right;
+    font-size: 18px;
+    font-weight: 600;
+}
+.book{
+    padding: 5px 0px 0px 10px;
+    margin-top: 20px;
+
+    width: 200px;
+    height: 180px;
+
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 5px 5px 15px #3f3f3f;
+}
+.book button{
+    margin-top: 10px;
+    margin-left: 15px;
+}
