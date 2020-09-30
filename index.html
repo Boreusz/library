@@ -1,44 +1,54 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="styles.css">
-        <title>Library</title>
-    </head>
-    <body>
-        <div id="header">
-            <a href="index.html">Your Library</a>
-            <button id="add">Add a Book</button>
-        </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="body-wrapper">
+        <header>
+            <div class="header-wrapper">
+                <a href="#" class="logo">Library</a>
+                <button id="add-book">Add a Book</button>
+            </div>
+            <div class="input-form_wrapper">
+                <div class="input-form">
+                    <span id="closebutton">X</span>
+                    <h1>Book Informations</h1>
 
-        <div id="main">
-            <div id="books-container">
-                <div class="book">
-                    <p>Tittle: </p>
-                    <p>Author: </p>
-                    <p>Pages: </p>
-                    <label for="readstatus">Read:</label>
-                    <input type="checkbox" name="readstatus">
-                    <button class="remove">Remove a Book</button>
+                        <ul>
+                            <li>
+                            <input type="text" name="author" id="author" placeholder="author">
+                            </li>
+                            <li>
+                                <input type="text" name="title" id="title" placeholder="title">
+                            </li>
+                            <li>
+                                <input type="number" name="pages" id="pages" placeholder="pages">
+                            </li>
+                            <li>
+                                <input type="radio" id="read" name="readstatus" value="read">
+                                <label for="read">read</label>
+                                <input type="radio" id="toread" name="readstatus" value="toread">
+                                <label for="toread">to read</label><br>
+                            </li>
+                            <li>
+                                <button type="submit" id="submit">Submit</button>
+                            </li>
+                        </ul>
+
                 </div>
             </div>
-        </div>
+        </header>
+        <main>
+            <div class="books-wrapper">
 
-        <div id="form-container">
-            <span id="close">x</span>
-            <div id="input-form">
-                <form>
-                    <label for="title">Title: </label>
-                    <input type="text" id="title" name="title"></br>
-                    <label for="author">Author: </label></br>
-                    <input type="text" id="author" name="author"></br>
-                    <label for="pages">Number of Pages</label></br>
-                    <input type="text" id="pages" name="pages"></br>
-                    <label for="read" id="read">Read status: </label>
-                    <input type="checkbox" id="read-input" name="read" "yes"></br>
-                    <button type="submit" id="addBookToLibrary">Confirm</button>
-                </form>
             </div>
-        </div>
-        <script src="main.js"></script>
-    </body>
+
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
 </html>
