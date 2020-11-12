@@ -20,28 +20,30 @@ class Book {
         // buttons
         let remove = document.createElement("button");
         let markRead = document.createElement("button");
+        let buttonwrap = document.createElement('div');
         remove.classList.add("remove");
         markRead.classList.add("markread");
-        card.appendChild(remove);
-        card.appendChild(markRead);
+        buttonwrap.classList.add('buttons-wrap')
+        buttonwrap.appendChild(remove);
+        buttonwrap.appendChild(markRead);
+        card.appendChild(buttonwrap);
         remove.textContent = "remove";
         markRead.textContent = "read";
-        remove.style.visibility = "hidden";
-        markRead.style.visibility = "hidden";
+        buttonwrap.style.visibility = "hidden";
         //visibility of remove/read buttons
         card.addEventListener("mouseover", function () {
-            remove.style.visibility = "visible";
-            markRead.style.visibility = "visible";
+            buttonwrap.style.visibility = "visible";
         });
         card.addEventListener("mouseout", function () {
-            remove.style.visibility = "hidden";
-            markRead.style.visibility = "hidden";
+            buttonwrap.style.visibility = "hidden";
         });
         // delete fucntionality
         remove.addEventListener("click", () => {
             let index = card.id;
             myLibrary.splice(index, 1);
-            remove.parentElement.remove();
+            remove.parentElement.parentElement.remove();
+            //localStorage.clear(myLibrary);
+            localStorage.setItem('library', JSON.stringify(myLibrary));;
         });
         //read status change functionality
         let readSpan = document.querySelectorAll("#readStatus");
@@ -54,6 +56,8 @@ class Book {
                 myLibrary[index].isRead = "read";
                 readSpan[index].innerHTML = "read";
             }
+            //localStorage.clear(myLibrary);
+            localStorage.setItem('library', JSON.stringify(myLibrary));;
         });
     }
 }
@@ -86,6 +90,8 @@ const display = (() => {
         myLibrary.push(newBook);
         newBook.displayTheBook();
         display.visibilityChange();
+        //localStorage.clear(myLibrary);
+        localStorage.setItem('library', JSON.stringify(myLibrary));;
     }
     return {
         visibilityChange,
@@ -95,7 +101,16 @@ const display = (() => {
 const formWrapper = document.querySelector(".input-form_wrapper");
 //submiting input form
 const submit = document.getElementById("submit");
-submit.addEventListener("click", display.addToLibrary);
+let authorInputStatus = document.getElementById('author');
+let titleInputStatus = document.getElementById('title');
+let pagesInputStatus = document.getElementById('pages');
+submit.addEventListener("click", ()=> {
+    if(authorInputStatus.checkValidity() == true && titleInputStatus.checkValidity() == true && titleInputStatus.checkValidity() == true){
+        display.addToLibrary();
+    }else {
+        alert("requiremnts of the form aren't matched");
+    }
+});
 //opening input form
 
 const inputForm = document.querySelector("#add-book");
@@ -108,6 +123,14 @@ const readRadio = document.getElementById("read");
 const unreadRadio = document.getElementById("toread");
 const books = document.querySelector('.books-wrapper');
 
+window.onload = () => {
+        let local = JSON.parse(localStorage.getItem('library'));
+        for(let i = 0; i < local.length; i++){
+            let localBook = new Book(local[i].title, local[i].author, local[i].numberOfPages, local[i].isRead);
+            myLibrary.push(localBook);
+            localBook.displayTheBook();
+        }
+};
 //to do:
 // refactoring to make code more clear for visitors
 // local storage/ firebase database
